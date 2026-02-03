@@ -1,0 +1,62 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Configuración del sitio"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "siteName": {
+      "type": "string",
+      "maxLength": 60,
+      "required": true
+    },
+    "legalName": {
+      "type": "string",
+      "maxLength": 60,
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "whatsappNumber": {
+      "type": "string"
+    },
+    "whatsappMessage": {
+      "type": "string"
+    },
+    "businessHours": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string",
+      "maxLength": 250
+    },
+    "googleMapsUrl": {
+      "type": "string",
+      "maxLength": 250
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_layout_social_links",
+  "info": {
+    "displayName": "social-link"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "maxLength": 60,
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 250,
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "facebook",
+        "instagram",
+        "linkedin",
+        "x",
+        "youtube",
+        "tiktok",
+        "whatsapp"
+      ]
+    },
+    "order": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "config": {}
+}
