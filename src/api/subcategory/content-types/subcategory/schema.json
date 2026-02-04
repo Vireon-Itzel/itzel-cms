@@ -46,6 +46,12 @@
       "type": "component",
       "component": "seo.seo",
       "repeatable": false
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "subcategories"
     }
   }
 }

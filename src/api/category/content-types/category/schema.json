@@ -67,6 +67,12 @@
       "type": "component",
       "component": "seo.seo",
       "repeatable": false
+    },
+    "subcategories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subcategory.subcategory",
+      "mappedBy": "category"
     }
   }
 }
