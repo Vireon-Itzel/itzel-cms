@@ -57,7 +57,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product.product",
-      "mappedBy": "subcategories"
+      "mappedBy": "subcategory"
     }
   }
 }

@@ -601,7 +601,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
         maxLength: 25;
       }>;
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
-    subcategories: Schema.Attribute.Relation<
+    subcategory: Schema.Attribute.Relation<
       'manyToOne',
       'api::subcategory.subcategory'
     >;

@@ -101,7 +101,7 @@
       "relation": "oneToMany",
       "target": "api::product.product"
     },
-    "subcategories": {
+    "subcategory": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::subcategory.subcategory",

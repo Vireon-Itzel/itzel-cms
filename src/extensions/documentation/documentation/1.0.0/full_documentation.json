@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2026-02-18T17:20:47.783Z"
+    "x-generation-date": "2026-02-18T17:25:14.345Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -6054,7 +6054,7 @@
                     }
                   }
                 },
-                "subcategories": {
+                "subcategory": {
                   "type": "object",
                   "properties": {
                     "id": {
@@ -10874,7 +10874,7 @@
                           }
                         }
                       },
-                      "subcategories": {
+                      "subcategory": {
                         "type": "object",
                         "properties": {
                           "id": {
@@ -11577,7 +11577,7 @@
                   "example": "string or id"
                 }
               },
-              "subcategories": {
+              "subcategory": {
                 "oneOf": [
                   {
                     "type": "integer"
@@ -13476,7 +13476,7 @@
                     }
                   }
                 },
-                "subcategories": {
+                "subcategory": {
                   "type": "object",
                   "properties": {
                     "id": {
@@ -14841,7 +14841,7 @@
               }
             }
           },
-          "subcategories": {
+          "subcategory": {
             "type": "object",
             "properties": {
               "id": {
@@ -20426,7 +20426,7 @@
                               }
                             }
                           },
-                          "subcategories": {
+                          "subcategory": {
                             "type": "object",
                             "properties": {
                               "id": {
