@@ -441,10 +441,6 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    brandDescription: Schema.Attribute.Text &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 800;
-      }>;
     brandEspecialties: Schema.Attribute.Component<
       'content.brand-specialty',
       true
@@ -458,6 +454,10 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 800;
+      }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'> &
       Schema.Attribute.Private;
@@ -475,6 +475,11 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     SEO: Schema.Attribute.Component<'seo.seo', false>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 180;
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

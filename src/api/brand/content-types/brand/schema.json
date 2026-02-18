@@ -34,7 +34,12 @@
       "maxLength": 20,
       "required": false
     },
-    "brandDescription": {
+    "title": {
+      "type": "string",
+      "maxLength": 180,
+      "required": true
+    },
+    "description": {
       "type": "text",
       "maxLength": 800
     },
