@@ -541,6 +541,34 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLegalContentLegalContent extends Struct.SingleTypeSchema {
+  collectionName: 'legal_contents';
+  info: {
+    displayName: 'Contenido legal';
+    pluralName: 'legal-contents';
+    singularName: 'legal-content';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    legalPages: Schema.Attribute.Component<'content.legal-content', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::legal-content.legal-content'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -1270,6 +1298,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
+      'api::legal-content.legal-content': ApiLegalContentLegalContent;
       'api::product.product': ApiProductProduct;
       'api::purchase-benefit.purchase-benefit': ApiPurchaseBenefitPurchaseBenefit;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;

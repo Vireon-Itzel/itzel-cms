@@ -19,6 +19,32 @@ export interface ContentBrandSpecialty extends Struct.ComponentSchema {
   };
 }
 
+export interface ContentLegalContent extends Struct.ComponentSchema {
+  collectionName: 'components_content_legal_contents';
+  info: {
+    displayName: 'legal-content';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    imageHero: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 20;
+      }>;
+    subtitle: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+  };
+}
+
 export interface LayoutSocialLink extends Struct.ComponentSchema {
   collectionName: 'components_layout_social_links';
   info: {
@@ -144,6 +170,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'content.brand-specialty': ContentBrandSpecialty;
+      'content.legal-content': ContentLegalContent;
       'layout.social-link': LayoutSocialLink;
       'product.faq-item': ProductFaqItem;
       'product.technical-feature': ProductTechnicalFeature;

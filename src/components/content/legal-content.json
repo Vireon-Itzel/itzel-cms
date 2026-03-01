@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_content_legal_contents",
+  "info": {
+    "displayName": "legal-content"
+  },
+  "options": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "maxLength": 20,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 250,
+      "required": true
+    },
+    "subtitle": {
+      "type": "string",
+      "maxLength": 250,
+      "required": false
+    },
+    "imageHero": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "SEO": {
+      "type": "component",
+      "component": "seo.seo",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
