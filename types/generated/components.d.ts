@@ -27,6 +27,7 @@ export interface ContentLegalContent extends Struct.ComponentSchema {
   attributes: {
     content: Schema.Attribute.Blocks;
     imageHero: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{

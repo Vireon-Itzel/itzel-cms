@@ -30,6 +30,11 @@
     },
     "content": {
       "type": "blocks"
+    },
+    "SEO": {
+      "type": "component",
+      "component": "seo.seo",
+      "repeatable": false
     }
   },
   "config": {}
