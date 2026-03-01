@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "legal_contents",
+  "info": {
+    "singularName": "legal-content",
+    "pluralName": "legal-contents",
+    "displayName": "Contenido legal"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "legalPages": {
+      "type": "component",
+      "component": "content.legal-content",
+      "repeatable": true
+    }
+  }
+}
