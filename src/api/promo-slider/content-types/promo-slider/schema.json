@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "promo_sliders",
+  "info": {
+    "singularName": "promo-slider",
+    "pluralName": "promo-sliders",
+    "displayName": "Slider de promociones"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "maxLength": 80,
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "maxLength": 250,
+      "required": true
+    },
+    "utmParams": {
+      "type": "text"
+    },
+    "desktopImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "mobileImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "displayOrder": {
+      "type": "integer"
+    }
+  }
+}

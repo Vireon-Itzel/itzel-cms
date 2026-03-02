@@ -685,6 +685,50 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPromoSliderPromoSlider extends Struct.CollectionTypeSchema {
+  collectionName: 'promo_sliders';
+  info: {
+    displayName: 'Slider de promociones';
+    pluralName: 'promo-sliders';
+    singularName: 'promo-slider';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    desktopImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    displayOrder: Schema.Attribute.Integer;
+    isActive: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::promo-slider.promo-slider'
+    > &
+      Schema.Attribute.Private;
+    mobileImage: Schema.Attribute.Media<'images'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 80;
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    utmParams: Schema.Attribute.Text;
+  };
+}
+
 export interface ApiPurchaseBenefitPurchaseBenefit
   extends Struct.CollectionTypeSchema {
   collectionName: 'purchase_benefits';
@@ -1336,6 +1380,7 @@ declare module '@strapi/strapi' {
       'api::events-page.events-page': ApiEventsPageEventsPage;
       'api::legal-content.legal-content': ApiLegalContentLegalContent;
       'api::product.product': ApiProductProduct;
+      'api::promo-slider.promo-slider': ApiPromoSliderPromoSlider;
       'api::purchase-benefit.purchase-benefit': ApiPurchaseBenefitPurchaseBenefit;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
