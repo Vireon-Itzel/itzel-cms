@@ -564,6 +564,8 @@ export interface ApiEventsPageEventsPage extends Struct.SingleTypeSchema {
       'api::events-page.events-page'
     > &
       Schema.Attribute.Private;
+    ogImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &

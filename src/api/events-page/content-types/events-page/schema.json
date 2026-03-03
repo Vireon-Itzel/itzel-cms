@@ -31,6 +31,15 @@
       "type": "component",
       "component": "content.event",
       "repeatable": true
+    },
+    "ogImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }
