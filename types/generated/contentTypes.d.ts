@@ -430,6 +430,64 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiBlogArticuleBlogArticule
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'blog_articules_api';
+  info: {
+    displayName: 'Articulos Blog';
+    pluralName: 'blog-articules-api';
+    singularName: 'blog-articule';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    articleDescription: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 800;
+      }>;
+    content: Schema.Attribute.DynamicZone<
+      ['blog.article-quote', 'blog.article-image', 'blog.article-content']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heroImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    iframeHeroVideoYoutube: Schema.Attribute.Media<'files' | 'videos'>;
+    isActive: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-articule.blog-articule'
+    > &
+      Schema.Attribute.Private;
+    mainTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    shortDescription: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    slug: Schema.Attribute.String & Schema.Attribute.Required;
+    subcategory: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::subcategory.subcategory'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    writer: Schema.Attribute.Relation<'manyToOne', 'api::writer.writer'>;
+  };
+}
+
 export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
   collectionName: 'brands';
   info: {
@@ -832,6 +890,10 @@ export interface ApiSubcategorySubcategory extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    articleBlogs: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-articule.blog-articule'
+    >;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -861,6 +923,62 @@ export interface ApiSubcategorySubcategory extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     SEO: Schema.Attribute.Component<'seo.seo', false>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWriterWriter extends Struct.CollectionTypeSchema {
+  collectionName: 'writers_api';
+  info: {
+    displayName: 'Escritor';
+    pluralName: 'writers-api';
+    singularName: 'writer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    articles: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-articule.blog-articule'
+    >;
+    avatar: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    blog_articles: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::blog-articule.blog-articule'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fullName: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    heroImage: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::writer.writer'
+    > &
+      Schema.Attribute.Private;
+    longDescription: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    shortDescription: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    slug: Schema.Attribute.String & Schema.Attribute.Required;
+    specialty: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1377,6 +1495,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::blog-articule.blog-articule': ApiBlogArticuleBlogArticule;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
       'api::events-page.events-page': ApiEventsPageEventsPage;
@@ -1386,6 +1505,7 @@ declare module '@strapi/strapi' {
       'api::purchase-benefit.purchase-benefit': ApiPurchaseBenefitPurchaseBenefit;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
+      'api::writer.writer': ApiWriterWriter;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

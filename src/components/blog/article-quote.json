@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blog_article_quotes",
+  "info": {
+    "displayName": "article-quote"
+  },
+  "options": {},
+  "attributes": {
+    "quoteText": {
+      "type": "string",
+      "maxLength": 250,
+      "required": true
+    },
+    "authorName": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

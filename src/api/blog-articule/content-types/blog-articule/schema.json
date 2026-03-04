@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blog_articules_api",
+  "info": {
+    "singularName": "blog-articule",
+    "pluralName": "blog-articules-api",
+    "displayName": "Articulos Blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mainTitle": {
+      "type": "string",
+      "maxLength": 250,
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "string",
+      "maxLength": 250,
+      "required": true
+    },
+    "articleDescription": {
+      "type": "text",
+      "maxLength": 800,
+      "required": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "iframeHeroVideoYoutube": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files",
+        "videos"
+      ]
+    },
+    "isActive": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "subcategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subcategory.subcategory",
+      "inversedBy": "articleBlogs"
+    },
+    "writer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::writer.writer",
+      "inversedBy": "articles"
+    },
+    "content": {
+      "type": "dynamiczone",
+      "components": [
+        "blog.article-quote",
+        "blog.article-image",
+        "blog.article-content"
+      ]
+    }
+  }
+}

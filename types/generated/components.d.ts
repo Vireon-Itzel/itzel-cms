@@ -1,5 +1,41 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlogArticleContent extends Struct.ComponentSchema {
+  collectionName: 'components_blog_article_contents';
+  info: {
+    displayName: 'article-content';
+  };
+  attributes: {
+    articleContent: Schema.Attribute.Blocks;
+  };
+}
+
+export interface BlogArticleImage extends Struct.ComponentSchema {
+  collectionName: 'components_blog_article_images';
+  info: {
+    displayName: 'article-image';
+  };
+  attributes: {
+    articleImage: Schema.Attribute.Media<'images' | 'files'>;
+    iframeVideoYoutube: Schema.Attribute.String;
+  };
+}
+
+export interface BlogArticleQuote extends Struct.ComponentSchema {
+  collectionName: 'components_blog_article_quotes';
+  info: {
+    displayName: 'article-quote';
+  };
+  attributes: {
+    authorName: Schema.Attribute.String & Schema.Attribute.Required;
+    quoteText: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+  };
+}
+
 export interface ContentBrandSpecialty extends Struct.ComponentSchema {
   collectionName: 'components_content_brand_specialties';
   info: {
@@ -217,6 +253,9 @@ export interface SeoSeo extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blog.article-content': BlogArticleContent;
+      'blog.article-image': BlogArticleImage;
+      'blog.article-quote': BlogArticleQuote;
       'content.brand-specialty': ContentBrandSpecialty;
       'content.event': ContentEvent;
       'content.legal-content': ContentLegalContent;

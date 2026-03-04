@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "writers_api",
+  "info": {
+    "singularName": "writer",
+    "pluralName": "writers-api",
+    "displayName": "Escritor"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullName": {
+      "type": "string",
+      "maxLength": 250,
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "string",
+      "maxLength": 250,
+      "required": true
+    },
+    "specialty": {
+      "type": "string",
+      "maxLength": 200,
+      "required": true
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "longDescription": {
+      "type": "blocks",
+      "required": true
+    },
+    "blog_articles": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::blog-articule.blog-articule"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-articule.blog-articule",
+      "mappedBy": "writer"
+    }
+  }
+}

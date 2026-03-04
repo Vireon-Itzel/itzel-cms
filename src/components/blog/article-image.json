@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blog_article_images",
+  "info": {
+    "displayName": "article-image"
+  },
+  "options": {},
+  "attributes": {
+    "articleImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "iframeVideoYoutube": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

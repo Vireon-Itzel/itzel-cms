@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_blog_article_contents",
+  "info": {
+    "displayName": "article-content"
+  },
+  "options": {},
+  "attributes": {
+    "articleContent": {
+      "type": "blocks",
+      "required": false
+    }
+  },
+  "config": {}
+}
