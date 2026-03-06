@@ -36,7 +36,7 @@
     "iframeHeroVideoYoutube": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "files",
         "videos"
@@ -55,10 +55,10 @@
         "blog.article-content"
       ]
     },
-    "subcategory": {
+    "tag": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::subcategory.subcategory",
+      "target": "api::article-classification.article-classification",
       "inversedBy": "articles"
     },
     "writer": {
