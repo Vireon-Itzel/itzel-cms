@@ -58,12 +58,6 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "subcategory"
-    },
-    "articles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::blog-article.blog-article",
-      "mappedBy": "subcategory"
     }
   }
 }

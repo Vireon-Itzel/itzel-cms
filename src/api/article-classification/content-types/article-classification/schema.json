@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "article_classifications",
+  "info": {
+    "singularName": "article-classification",
+    "pluralName": "article-classifications",
+    "displayName": "Clasificación de artículos"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tag": {
+      "type": "string",
+      "maxLength": 40,
+      "required": true
+    },
+    "idTag": {
+      "type": "uid",
+      "targetField": "tag",
+      "required": true
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::blog-article.blog-article",
+      "mappedBy": "tag"
+    }
+  }
+}

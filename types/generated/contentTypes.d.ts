@@ -430,6 +430,44 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiArticleClassificationArticleClassification
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'article_classifications';
+  info: {
+    displayName: 'Clasificaci\u00F3n de art\u00EDculos';
+    pluralName: 'article-classifications';
+    singularName: 'article-classification';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    articles: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::blog-article.blog-article'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    idTag: Schema.Attribute.UID<'tag'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article-classification.article-classification'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    tag: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 40;
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBlogArticleBlogArticle extends Struct.CollectionTypeSchema {
   collectionName: 'blog_articles';
   info: {
@@ -449,8 +487,7 @@ export interface ApiBlogArticleBlogArticle extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     heroImage: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
-    iframeHeroVideoYoutube: Schema.Attribute.Media<'files' | 'videos'> &
-      Schema.Attribute.Required;
+    iframeHeroVideoYoutube: Schema.Attribute.Media<'files' | 'videos'>;
     isActive: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
@@ -467,9 +504,9 @@ export interface ApiBlogArticleBlogArticle extends Struct.CollectionTypeSchema {
         maxLength: 255;
       }>;
     slug: Schema.Attribute.UID;
-    subcategory: Schema.Attribute.Relation<
+    tag: Schema.Attribute.Relation<
       'manyToOne',
-      'api::subcategory.subcategory'
+      'api::article-classification.article-classification'
     >;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -885,10 +922,6 @@ export interface ApiSubcategorySubcategory extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    articles: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::blog-article.blog-article'
-    >;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1482,6 +1515,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::article-classification.article-classification': ApiArticleClassificationArticleClassification;
       'api::blog-article.blog-article': ApiBlogArticleBlogArticle;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
