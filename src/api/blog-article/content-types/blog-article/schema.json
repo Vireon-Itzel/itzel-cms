@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "blog_articules_api",
+  "collectionName": "blog_articles",
   "info": {
-    "singularName": "blog-articule",
-    "pluralName": "blog-articules-api",
+    "singularName": "blog-article",
+    "pluralName": "blog-articles",
     "displayName": "Articulos Blog"
   },
   "options": {
@@ -11,23 +11,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "mainTitle": {
+    "title": {
       "type": "string",
       "maxLength": 250,
       "required": true
     },
     "slug": {
-      "type": "uid",
-      "targetField": "mainTitle"
+      "type": "uid"
     },
     "shortDescription": {
       "type": "string",
-      "maxLength": 250,
-      "required": true
-    },
-    "articleDescription": {
-      "type": "text",
-      "maxLength": 800,
+      "maxLength": 255,
       "required": true
     },
     "heroImage": {
@@ -42,6 +36,7 @@
     "iframeHeroVideoYoutube": {
       "type": "media",
       "multiple": false,
+      "required": true,
       "allowedTypes": [
         "files",
         "videos"
@@ -52,18 +47,6 @@
       "required": true,
       "default": true
     },
-    "subcategory": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::subcategory.subcategory",
-      "inversedBy": "articleBlogs"
-    },
-    "writer": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::writer.writer",
-      "inversedBy": "articles"
-    },
     "content": {
       "type": "dynamiczone",
       "components": [
@@ -71,6 +54,18 @@
         "blog.article-image",
         "blog.article-content"
       ]
+    },
+    "subcategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subcategory.subcategory",
+      "inversedBy": "articles"
+    },
+    "writer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::writer.writer",
+      "inversedBy": "articles"
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "writers_api",
+  "collectionName": "writers",
   "info": {
     "singularName": "writer",
-    "pluralName": "writers-api",
-    "displayName": "Escritor"
+    "pluralName": "writers",
+    "displayName": "Escritores"
   },
   "options": {
     "draftAndPublish": true
@@ -22,12 +22,11 @@
     },
     "shortDescription": {
       "type": "string",
-      "maxLength": 250,
+      "maxLength": 255,
       "required": true
     },
-    "specialty": {
+    "speciality": {
       "type": "string",
-      "maxLength": 200,
       "required": true
     },
     "avatar": {
@@ -52,15 +51,10 @@
       "type": "blocks",
       "required": true
     },
-    "blog_articles": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::blog-articule.blog-articule"
-    },
     "articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::blog-articule.blog-articule",
+      "target": "api::blog-article.blog-article",
       "mappedBy": "writer"
     }
   }

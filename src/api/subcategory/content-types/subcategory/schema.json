@@ -59,10 +59,10 @@
       "target": "api::product.product",
       "mappedBy": "subcategory"
     },
-    "articleBlogs": {
+    "articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::blog-articule.blog-articule",
+      "target": "api::blog-article.blog-article",
       "mappedBy": "subcategory"
     }
   }

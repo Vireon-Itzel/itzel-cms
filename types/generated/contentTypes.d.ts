@@ -430,23 +430,17 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiBlogArticuleBlogArticule
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'blog_articules_api';
+export interface ApiBlogArticleBlogArticle extends Struct.CollectionTypeSchema {
+  collectionName: 'blog_articles';
   info: {
     displayName: 'Articulos Blog';
-    pluralName: 'blog-articules-api';
-    singularName: 'blog-articule';
+    pluralName: 'blog-articles';
+    singularName: 'blog-article';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    articleDescription: Schema.Attribute.Text &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 800;
-      }>;
     content: Schema.Attribute.DynamicZone<
       ['blog.article-quote', 'blog.article-image', 'blog.article-content']
     >;
@@ -455,32 +449,33 @@ export interface ApiBlogArticuleBlogArticule
       Schema.Attribute.Private;
     heroImage: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
-    iframeHeroVideoYoutube: Schema.Attribute.Media<'files' | 'videos'>;
+    iframeHeroVideoYoutube: Schema.Attribute.Media<'files' | 'videos'> &
+      Schema.Attribute.Required;
     isActive: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::blog-articule.blog-articule'
+      'api::blog-article.blog-article'
     > &
       Schema.Attribute.Private;
-    mainTitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 250;
-      }>;
     publishedAt: Schema.Attribute.DateTime;
     shortDescription: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 250;
+        maxLength: 255;
       }>;
-    slug: Schema.Attribute.UID<'mainTitle'>;
+    slug: Schema.Attribute.UID;
     subcategory: Schema.Attribute.Relation<
       'manyToOne',
       'api::subcategory.subcategory'
     >;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -890,9 +885,9 @@ export interface ApiSubcategorySubcategory extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    articleBlogs: Schema.Attribute.Relation<
+    articles: Schema.Attribute.Relation<
       'oneToMany',
-      'api::blog-articule.blog-articule'
+      'api::blog-article.blog-article'
     >;
     category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
     createdAt: Schema.Attribute.DateTime;
@@ -930,10 +925,10 @@ export interface ApiSubcategorySubcategory extends Struct.CollectionTypeSchema {
 }
 
 export interface ApiWriterWriter extends Struct.CollectionTypeSchema {
-  collectionName: 'writers_api';
+  collectionName: 'writers';
   info: {
-    displayName: 'Escritor';
-    pluralName: 'writers-api';
+    displayName: 'Escritores';
+    pluralName: 'writers';
     singularName: 'writer';
   };
   options: {
@@ -942,14 +937,10 @@ export interface ApiWriterWriter extends Struct.CollectionTypeSchema {
   attributes: {
     articles: Schema.Attribute.Relation<
       'oneToMany',
-      'api::blog-articule.blog-articule'
+      'api::blog-article.blog-article'
     >;
     avatar: Schema.Attribute.Media<'images' | 'files'> &
       Schema.Attribute.Required;
-    blog_articles: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::blog-articule.blog-articule'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -971,14 +962,10 @@ export interface ApiWriterWriter extends Struct.CollectionTypeSchema {
     shortDescription: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 250;
+        maxLength: 255;
       }>;
     slug: Schema.Attribute.UID<'fullName'>;
-    specialty: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 200;
-      }>;
+    speciality: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1495,7 +1482,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::blog-articule.blog-articule': ApiBlogArticuleBlogArticule;
+      'api::blog-article.blog-article': ApiBlogArticleBlogArticle;
       'api::brand.brand': ApiBrandBrand;
       'api::category.category': ApiCategoryCategory;
       'api::events-page.events-page': ApiEventsPageEventsPage;
