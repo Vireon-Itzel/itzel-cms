@@ -932,6 +932,8 @@ export interface ApiSubcategorySubcategory extends Struct.CollectionTypeSchema {
         maxLength: 250;
       }>;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    imageMobile: Schema.Attribute.Media<'images' | 'files'> &
+      Schema.Attribute.Required;
     isActive: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<true>;
