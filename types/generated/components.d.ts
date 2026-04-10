@@ -28,10 +28,10 @@ export interface BlogArticleQuote extends Struct.ComponentSchema {
   };
   attributes: {
     authorName: Schema.Attribute.String & Schema.Attribute.Required;
-    quoteText: Schema.Attribute.String &
+    quoteText: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
-        maxLength: 250;
+        maxLength: 800;
       }>;
   };
 }
@@ -61,6 +61,11 @@ export interface ContentEvent extends Struct.ComponentSchema {
     displayName: 'event';
   };
   attributes: {
+    descriptionRegistrer: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }> &
+      Schema.Attribute.DefaultTo<'D\u00E9janos tus datos para enviarte m\u00E1s informaci\u00F3n sobre este evento.'>;
     endDate: Schema.Attribute.Date;
     endTime: Schema.Attribute.Time;
     eventType: Schema.Attribute.String &
@@ -100,6 +105,11 @@ export interface ContentEvent extends Struct.ComponentSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 80;
       }>;
+    titleRegistrer: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 80;
+      }> &
+      Schema.Attribute.DefaultTo<'No te pierdas nada'>;
   };
 }
 

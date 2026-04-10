@@ -45,20 +45,31 @@
     "endTime": {
       "type": "time"
     },
-    "titleRegisterSuccess": {
-      "type": "string",
-      "maxLength": 80
-    },
-    "instructionsRegisterSuccess": {
-      "type": "string",
-      "maxLength": 250
-    },
     "image": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
       ]
+    },
+    "titleRegistrer": {
+      "type": "string",
+      "default": "No te pierdas nada",
+      "maxLength": 80,
+      "required": false
+    },
+    "descriptionRegistrer": {
+      "type": "string",
+      "default": "Déjanos tus datos para enviarte más información sobre este evento.",
+      "maxLength": 200
+    },
+    "instructionsRegisterSuccess": {
+      "type": "string",
+      "maxLength": 250
+    },
+    "titleRegisterSuccess": {
+      "type": "string",
+      "maxLength": 80
     }
   },
   "config": {}
