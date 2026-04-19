@@ -61,6 +61,7 @@ export interface ContentEvent extends Struct.ComponentSchema {
     displayName: 'event';
   };
   attributes: {
+    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
     descriptionRegistrer: Schema.Attribute.String &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 200;
