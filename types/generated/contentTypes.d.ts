@@ -890,6 +890,7 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
         maxLength: 250;
       }>;
     googleMapsUrlIframe: Schema.Attribute.Text;
+    gtmId: Schema.Attribute.String & Schema.Attribute.Required;
     legalName: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{

@@ -96,6 +96,10 @@
     "seoTextPLP": {
       "type": "blocks",
       "required": true
+    },
+    "gtmId": {
+      "type": "string",
+      "required": true
     }
   }
 }
