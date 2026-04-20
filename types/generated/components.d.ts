@@ -155,6 +155,7 @@ export interface LayoutSocialLink extends Struct.ComponentSchema {
         'youtube',
         'tiktok',
         'whatsapp',
+        'pinterest',
       ]
     >;
     isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
