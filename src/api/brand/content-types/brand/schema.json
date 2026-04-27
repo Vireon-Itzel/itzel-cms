@@ -63,6 +63,15 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "brand"
+    },
+    "displayOrder": {
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": 0
     }
   }
 }

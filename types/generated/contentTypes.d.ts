@@ -561,6 +561,13 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 800;
       }>;
+    displayOrder: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<0>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'>;
     logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
