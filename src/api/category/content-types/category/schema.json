@@ -86,7 +86,7 @@
         }
       },
       "component": "content.slider",
-      "repeatable": false
+      "repeatable": true
     }
   }
 }

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2026-04-30T23:02:00.597Z"
+    "x-generation-date": "2026-05-05T17:10:30.557Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -14818,7 +14818,10 @@
                           }
                         },
                         "sliderHero": {
-                          "$ref": "#/components/schemas/ContentSliderComponent"
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ContentSliderComponent"
+                          }
                         },
                         "createdAt": {
                           "type": "string",
@@ -16559,7 +16562,10 @@
                 }
               },
               "sliderHero": {
-                "$ref": "#/components/schemas/ContentSliderComponent"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ContentSliderComponent"
+                }
               },
               "locale": {
                 "type": "string"
@@ -18591,7 +18597,10 @@
                       }
                     },
                     "sliderHero": {
-                      "$ref": "#/components/schemas/ContentSliderComponent"
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ContentSliderComponent"
+                      }
                     },
                     "createdAt": {
                       "type": "string",
@@ -20061,7 +20070,10 @@
             }
           },
           "sliderHero": {
-            "$ref": "#/components/schemas/ContentSliderComponent"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentSliderComponent"
+            }
           },
           "createdAt": {
             "type": "string",
@@ -25561,7 +25573,10 @@
                           }
                         },
                         "sliderHero": {
-                          "$ref": "#/components/schemas/ContentSliderComponent"
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/ContentSliderComponent"
+                          }
                         },
                         "createdAt": {
                           "type": "string",
@@ -35659,7 +35674,10 @@
                 }
               },
               "sliderHero": {
-                "$ref": "#/components/schemas/ContentSliderComponent"
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ContentSliderComponent"
+                }
               },
               "createdAt": {
                 "type": "string",

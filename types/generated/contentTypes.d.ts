@@ -643,7 +643,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 250;
       }>;
-    sliderHero: Schema.Attribute.Component<'content.slider', false> &
+    sliderHero: Schema.Attribute.Component<'content.slider', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
