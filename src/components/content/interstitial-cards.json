@@ -1,7 +1,7 @@
 {
   "collectionName": "components_content_interstitial_cards",
   "info": {
-    "displayName": "interstitialCards"
+    "displayName": "interstitial-cards"
   },
   "options": {},
   "attributes": {
@@ -43,10 +43,24 @@
       "component": "seo.seo",
       "repeatable": false
     },
-    "productos": {
+    "products": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::product.product"
+      "target": "api::product.product",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "allProducts"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "allProducts": {
+      "type": "boolean",
+      "default": false
     }
   },
   "config": {}

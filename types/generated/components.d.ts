@@ -114,9 +114,10 @@ export interface ContentEvent extends Struct.ComponentSchema {
 export interface ContentInterstitialCards extends Struct.ComponentSchema {
   collectionName: 'components_content_interstitial_cards';
   info: {
-    displayName: 'interstitialCards';
+    displayName: 'interstitial-cards';
   };
   attributes: {
+    allProducts: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     description: Schema.Attribute.Text &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 500;
@@ -131,7 +132,7 @@ export interface ContentInterstitialCards extends Struct.ComponentSchema {
         maxLength: 200;
       }>;
     order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    productos: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
     SEO: Schema.Attribute.Component<'seo.seo', false>;
     slug: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -182,7 +183,7 @@ export interface ContentSlider extends Struct.ComponentSchema {
     mobileImage: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     url: Schema.Attribute.Text &
       Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'/'>;
+      Schema.Attribute.DefaultTo<'#'>;
   };
 }
 

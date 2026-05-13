@@ -7,7 +7,7 @@
   "attributes": {
     "url": {
       "type": "text",
-      "default": "/",
+      "default": "#",
       "required": true
     },
     "desktopImage": {
