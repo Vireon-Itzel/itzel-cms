@@ -568,6 +568,32 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<0>;
+    featuredProducts: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product.product'
+    >;
+    interestitialCard: Schema.Attribute.Component<
+      'content.interstitial-cards',
+      true
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    interstitialColor: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    interstitialLogo: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::brand.brand'>;
     logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
@@ -583,6 +609,12 @@ export interface ApiBrandBrand extends Struct.CollectionTypeSchema {
     products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     SEO: Schema.Attribute.Component<'seo.seo', false>;
+    sliderHero: Schema.Attribute.Component<'content.slider', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID<'name'> & Schema.Attribute.Required;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
@@ -810,7 +842,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 120;
       }>;
-    price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     relatedConsumables: Schema.Attribute.Relation<
       'oneToMany',
@@ -824,10 +855,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 120;
-      }>;
-    sku: Schema.Attribute.String &
-      Schema.Attribute.SetMinMaxLength<{
-        maxLength: 25;
       }>;
     slug: Schema.Attribute.UID & Schema.Attribute.Required;
     subcategory: Schema.Attribute.Relation<

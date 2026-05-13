@@ -111,6 +111,37 @@ export interface ContentEvent extends Struct.ComponentSchema {
   };
 }
 
+export interface ContentInterstitialCards extends Struct.ComponentSchema {
+  collectionName: 'components_content_interstitial_cards';
+  info: {
+    displayName: 'interstitialCards';
+  };
+  attributes: {
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    isActive: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    productos: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    SEO: Schema.Attribute.Component<'seo.seo', false>;
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 120;
+      }>;
+  };
+}
+
 export interface ContentLegalContent extends Struct.ComponentSchema {
   collectionName: 'components_content_legal_contents';
   info: {
@@ -284,6 +315,7 @@ declare module '@strapi/strapi' {
       'blog.article-quote': BlogArticleQuote;
       'content.brand-specialty': ContentBrandSpecialty;
       'content.event': ContentEvent;
+      'content.interstitial-cards': ContentInterstitialCards;
       'content.legal-content': ContentLegalContent;
       'content.slider': ContentSlider;
       'layout.social-link': LayoutSocialLink;

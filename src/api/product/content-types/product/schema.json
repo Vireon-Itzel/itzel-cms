@@ -34,16 +34,9 @@
       "maxLength": 250,
       "required": true
     },
-    "price": {
-      "type": "decimal"
-    },
     "currency": {
       "type": "string",
       "default": "MXN"
-    },
-    "sku": {
-      "type": "string",
-      "maxLength": 25
     },
     "isNew": {
       "type": "boolean",
